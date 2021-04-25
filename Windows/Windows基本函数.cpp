@@ -121,6 +121,9 @@ int WINAPI WinMain(
 		WS_OVERLAPPEDWINDOW //带有WS_OVERLAPPED、WS_CAPTION、WS_SYSMENU、WS_THICKFRAME、WS_MINIMIZEBOX和WS_MAXIMIZEBOX样式的重叠窗口
 		*/
 		WS_OVERLAPPEDWINDOW,
+		//也可用GetSysMetrics()函数获取注册窗口的尺寸用于创建窗口
+    		//int width = GetSystemMetrics(SM_CXSCREEN);
+    		//int height = GetSystemMetrics(SM_CXSCREEN);
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
