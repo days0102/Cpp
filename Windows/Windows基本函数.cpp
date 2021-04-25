@@ -138,6 +138,15 @@ int WINAPI WinMain(
 	UpdateWindow(hwnd);
 
 	//消息循环
+	/*
+	MSG 结构体
+	HWND        hwnd;		主窗口句柄
+	UINT        message;	具体的消息
+	WPARAM      wParam;		附加消息，通常是键盘消息
+	LPARAM      lParam;		附加消息，通过是鼠标消息
+	DWORD       time;		消息产生的时间
+	POINT       pt;			附加消息，鼠标坐标信息
+	*/
 	MSG msg;//定义一个MSG类型的变量
 	//GetMessage()取消息成功的话会返回一个非零值
 	/*
