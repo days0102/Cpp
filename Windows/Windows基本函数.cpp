@@ -77,7 +77,7 @@ int WINAPI WinMain(
 		MB_ICONQUESTION       //显示问号图标,表示疑问
 		MB_ICONERROR          //显示一个错误图标
 		*/
-		MessageBox(NULL, TEXT("这个程序需要在 Windows NT 才能执行！"), szAppName, MB_ICONERROR);
+		MessageBox(NULL, TEXT("这个程序需要在 Windows NT 才能执行！"), szAppName, MB_ICONERROR|MB_OK);//可以使用或来选择多个参数
 		return 0;
 	}
 
