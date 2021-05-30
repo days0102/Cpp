@@ -1,11 +1,11 @@
-#include<afxwin.h>//°üº¬afxwin.hÍ·ÎÄ¼þ£¬ÒýÈëMFCÀà¿â
+#include<afxwin.h>//åŒ…å«afxwin.hå¤´æ–‡ä»¶ï¼Œå¼•å…¥MFCç±»åº“
 
-//´ÓCWinAppÀàÖÐÅÉÉú³öÒ»¸ö×Ô¼º¶¨ÒåµÄÀà
+//ä»ŽCWinAppç±»ä¸­æ´¾ç”Ÿå‡ºä¸€ä¸ªè‡ªå·±å®šä¹‰çš„ç±»
 class CMyApp :public CWinApp
 {
 public:
-	//¸²¸ÇCWinApp::InitInstanceº¯Êý£¬ÒòÎªÔÚÓ¦ÓÃ³ÌÐòµÄÉú´æÆÚÄÚInitInstanceº¯Êýµ÷ÓÃ½ÏÔç£¬ÔÚ³ÌÐò¿ªÊ¼ÔËÐÐÒÔºó¶ø´°¿Ú´´½¨Ö®Ç°¡£
-	//µ«´°¿ÚÓÉInitInstance´´½¨£¬·ñÔòÓ¦ÓÃ³ÌÐò²»»áÓÐ´°¿Ú
+	//è¦†ç›–CWinApp::InitInstanceå‡½æ•°ï¼Œå› ä¸ºåœ¨åº”ç”¨ç¨‹åºçš„ç”Ÿå­˜æœŸå†…InitInstanceå‡½æ•°è°ƒç”¨è¾ƒæ—©ï¼Œåœ¨ç¨‹åºå¼€å§‹è¿è¡Œä»¥åŽè€Œçª—å£åˆ›å»ºä¹‹å‰ã€‚
+	//ä½†çª—å£ç”±InitInstanceåˆ›å»ºï¼Œå¦åˆ™åº”ç”¨ç¨‹åºä¸ä¼šæœ‰çª—å£
 	
 	virtual BOOL InitInstance();
 
@@ -16,7 +16,7 @@ class CMainWindow :public CFrameWnd
 public:
 	CMainWindow();
 protected:
-	afx_msg void OnPaint();
+	afx_msg void OnPaint();//æ¶ˆæ¯å¤„ç†å‡½æ•°ï¼ˆå‘½åè§„åˆ™afx_msg void OnMsgName(UINT nFlags,CPoint point)ï¼‰
 	DECLARE_MESSAGE_MAP();
 };
 CMyApp myApp;
@@ -24,79 +24,79 @@ CMyApp myApp;
 
 BOOL CMyApp::InitInstance()
 {
-	//¹¹½¨Ò»¸öCMainWindow¶ÔÏó£¬²¢¸³Öµ¸øÓ¦ÓÃ³ÌÐò¶ÔÏóm_pMainWndÊý¾Ý³ÉÔ±ÖÐ
-	//Ô­ÐÍ CWnd* m_pMainWnd;    // main window (usually same AfxGetApp()->m_pMainWnd)
+	//æž„å»ºä¸€ä¸ªCMainWindowå¯¹è±¡ï¼Œå¹¶èµ‹å€¼ç»™åº”ç”¨ç¨‹åºå¯¹è±¡m_pMainWndæ•°æ®æˆå‘˜ä¸­
+	//åŽŸåž‹ CWnd* m_pMainWnd;    // main window (usually same AfxGetApp()->m_pMainWnd)
 	m_pMainWnd = new CMainWindow;
 
-	//´´½¨ºóµ÷ÓÃShowWindowºÍUpdateWindowº¯Êý
-	m_pMainWnd->ShowWindow(m_nCmdShow);//m_nCmdShowÎªÒ»¸öÕûÊý£¬±íÊ¾´°¿ÚµÄ×´Ì¬
+	//åˆ›å»ºåŽè°ƒç”¨ShowWindowå’ŒUpdateWindowå‡½æ•°
+	m_pMainWnd->ShowWindow(m_nCmdShow);//m_nCmdShowä¸ºä¸€ä¸ªæ•´æ•°ï¼Œè¡¨ç¤ºçª—å£çš„çŠ¶æ€
 	m_pMainWnd->UpdateWindow();
-	//Èç¹ûÒªÔÚMFC³ÌÐòÖÐµ÷ÓÃWindowµÄAPI,ÒªÔÚº¯ÊýÇ°¼ÓÉÏÈ«¾ÖÔËËã·û::
-	//Èç::UpdateWindow(hWnd);
+	//å¦‚æžœè¦åœ¨MFCç¨‹åºä¸­è°ƒç”¨Windowçš„API,è¦åœ¨å‡½æ•°å‰åŠ ä¸Šå…¨å±€è¿ç®—ç¬¦::
+	//å¦‚::UpdateWindow(hWnd);
 	return TRUE;
 }
 
-//ÏûÏ¢Ó³Éä
-BEGIN_MESSAGE_MAP(CMainWindow, CFrameWnd)//±íÊ¾ÏûÏ¢Ó³ÉäËùÊôµÄÀàºÍ¸ÃÀàµÄ»ùÀà
+//æ¶ˆæ¯æ˜ å°„
+BEGIN_MESSAGE_MAP(CMainWindow, CFrameWnd)//è¡¨ç¤ºæ¶ˆæ¯æ˜ å°„æ‰€å±žçš„ç±»å’Œè¯¥ç±»çš„åŸºç±»
 	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 CMainWindow::CMainWindow()
 {
 	/*
-	virtual BOOL Create(LPCTSTR lpszClassName,   //Ö¸¶¨´°¿Ú»ùÓÚWNDCLASSÀàµÄÃû³Æ
-				         //ÉèÎªNULL½«´´½¨Ò»¸ö»ùÓÚÓÐÖ÷½á¹¹×¢²áµÄWNDCLASSÀàµÄÄ¬ÈÏ¿ò¼Ü´°¿Ú
+	virtual BOOL Create(LPCTSTR lpszClassName,   //æŒ‡å®šçª—å£åŸºäºŽWNDCLASSç±»çš„åç§°
+				         //è®¾ä¸ºNULLå°†åˆ›å»ºä¸€ä¸ªåŸºäºŽæœ‰ä¸»ç»“æž„æ³¨å†Œçš„WNDCLASSç±»çš„é»˜è®¤æ¡†æž¶çª—å£
 
-				LPCTSTR lpszWindowName,          //±êÌâÀ¸³öÏÖµÄÎÄ×Ö
-				DWORD dwStyle = WS_OVERLAPPEDWINDOW, //Ö¸¶¨´°¿ÚÑùÊ½
-				const RECT& rect = rectDefault,   //CÖÐRect½á¹¹µÄÒýÓÃ£¬Ö¸¶¨´°¿ÚÔÚÆÁÄ»µÄ³õÊ¼Î»ÖÃºÍ³ß´ç
-				CWnd* pParentWnd = NULL,        // != NULL for popups //Ö¸¶¨¸¸Àà´°¿Ú
-				LPCTSTR lpszMenuName = NULL,    //´°¿Ú²Ëµ¥
+				LPCTSTR lpszWindowName,          //æ ‡é¢˜æ å‡ºçŽ°çš„æ–‡å­—
+				DWORD dwStyle = WS_OVERLAPPEDWINDOW, //æŒ‡å®šçª—å£æ ·å¼
+				const RECT& rect = rectDefault,   //Cä¸­Rectç»“æž„çš„å¼•ç”¨ï¼ŒæŒ‡å®šçª—å£åœ¨å±å¹•çš„åˆå§‹ä½ç½®å’Œå°ºå¯¸
+				CWnd* pParentWnd = NULL,        // != NULL for popups //æŒ‡å®šçˆ¶ç±»çª—å£
+				LPCTSTR lpszMenuName = NULL,    //çª—å£èœå•
 				DWORD dwExStyle = 0,            
 				CCreateContext* pContext = NULL
 				);
 	*/
 	Create(NULL, _T("Hello!"));
 	/*
-	"Hello"±àÒëÆ÷½«´ÓANSI×Ö·û×é³É¸Ã×Ö·û´®
-	L"Hello"±àÒëÆ÷½«Ê¹ÓÃUnicode×Ö·û
-	_T("Hello")Èç¹ûÔ¤´¦Àí³ÌÐò·ûºÅ_UNICODE£¬±àÒëÆ÷½«Ê¹ÓÃUnicode×Ö·û£¬Èç¹ûÃ»ÓÐÔ¤´¦Àí³ÌÐò·ûºÅ£¬½«Ê¹ÓÃANSI
+	"Hello"ç¼–è¯‘å™¨å°†ä»ŽANSIå­—ç¬¦ç»„æˆè¯¥å­—ç¬¦ä¸²
+	L"Hello"ç¼–è¯‘å™¨å°†ä½¿ç”¨Unicodeå­—ç¬¦
+	_T("Hello")å¦‚æžœé¢„å¤„ç†ç¨‹åºç¬¦å·_UNICODEï¼Œç¼–è¯‘å™¨å°†ä½¿ç”¨Unicodeå­—ç¬¦ï¼Œå¦‚æžœæ²¡æœ‰é¢„å¤„ç†ç¨‹åºç¬¦å·ï¼Œå°†ä½¿ç”¨ANSI
 	*/
 }
 
 void CMainWindow::OnPaint()
 {
 	/*
-	* ×¨ÃÅÓÃÍ¾µÄÉè±¸ÃèÊö±íÀà£º£¨¿ÉÖ±½ÓÊµÀý»¯£©
-	CPaintDC  //ÓÃÓÚÔÚ´°¿Ú¿Í»§Çø»­Í¼£¨½öÏÞÓÚOnPaint´¦Àí³ÌÐò£©
-	CClientDC //ÓÃÓÚÔÚ´°¿Ú¿Í»§Çø»­Í¼£¨³ýOnPaintÍâµÄÈÎºÎ´¦Àí³ÌÐò£©
-	CWindowDC //ÓÃÓÚÔÚ´°¿ÚÄÚÈÎÒâµØ·½»­Í¼£¬°üÀ¨·Ç¿Í»§Çø
-	CMetaFileDC  //ÓÃÓÚÏòGDIÔªÎÄ¼þÖÐ»­Í¼
+	* ä¸“é—¨ç”¨é€”çš„è®¾å¤‡æè¿°è¡¨ç±»ï¼šï¼ˆå¯ç›´æŽ¥å®žä¾‹åŒ–ï¼‰
+	CPaintDC  //ç”¨äºŽåœ¨çª—å£å®¢æˆ·åŒºç”»å›¾ï¼ˆä»…é™äºŽOnPaintå¤„ç†ç¨‹åºï¼‰
+	CClientDC //ç”¨äºŽåœ¨çª—å£å®¢æˆ·åŒºç”»å›¾ï¼ˆé™¤OnPaintå¤–çš„ä»»ä½•å¤„ç†ç¨‹åºï¼‰
+	CWindowDC //ç”¨äºŽåœ¨çª—å£å†…ä»»æ„åœ°æ–¹ç”»å›¾ï¼ŒåŒ…æ‹¬éžå®¢æˆ·åŒº
+	CMetaFileDC  //ç”¨äºŽå‘GDIå…ƒæ–‡ä»¶ä¸­ç”»å›¾
 	*/
-	//BeginPaintºÍEndPaint·Ö±ðÔÚCPaintDCµÈ¶ÔÏóµÄ¹¹Ôìº¯ÊýºÍÎö¹¹º¯ÊýÖÐ
+	//BeginPaintå’ŒEndPaintåˆ†åˆ«åœ¨CPaintDCç­‰å¯¹è±¡çš„æž„é€ å‡½æ•°å’Œæžæž„å‡½æ•°ä¸­
 
-	//Õ»ÖÐ¹¹ÔìÊ±»á×Ô¶¯»ØÊÕ£¬ÔÚ¶ÑÖÐnew´´½¨Ê±ÒªÇ××ÔdeleteÊÍ·Å
-	CPaintDC dc(this);//Ö»ÄÜÔÚOnPaint´¦Àí³ÌÐòÖÐÊ¹ÓÃ
+	//æ ˆä¸­æž„é€ æ—¶ä¼šè‡ªåŠ¨å›žæ”¶ï¼Œåœ¨å †ä¸­newåˆ›å»ºæ—¶è¦äº²è‡ªdeleteé‡Šæ”¾
+	CPaintDC dc(this);//åªèƒ½åœ¨OnPaintå¤„ç†ç¨‹åºä¸­ä½¿ç”¨
 
-	//´ú±í¾ØÕóµÄCRect¶ÔÏó
+	//ä»£è¡¨çŸ©é˜µçš„CRectå¯¹è±¡
 	CRect rect;
 	//CWnd::GetClientRect()
 	GetClientRect(&rect);
 	/*
 	int DrawText(
-		LPCTSTR lpchText,  //×Ö·û´®Ö¸Õë
-		int cchText,       //×Ö·û´®×Ö·ûÊý£¬-1Ê±Òª×Ö·û´®ÒÔNULL½áÎ²
-		LPRECT lprc,       //Ö¸¶¨¸ñÊ½¾ØÕóµÄÒ»¸öRECT¶ÔÏó»òµØÖ·
-		UINT format        //ÏÔÊ¾¸ñÊ½
+		LPCTSTR lpchText,  //å­—ç¬¦ä¸²æŒ‡é’ˆ
+		int cchText,       //å­—ç¬¦ä¸²å­—ç¬¦æ•°ï¼Œ-1æ—¶è¦å­—ç¬¦ä¸²ä»¥NULLç»“å°¾
+		LPRECT lprc,       //æŒ‡å®šæ ¼å¼çŸ©é˜µçš„ä¸€ä¸ªRECTå¯¹è±¡æˆ–åœ°å€
+		UINT format        //æ˜¾ç¤ºæ ¼å¼
     )*/
 	dc.DrawText(_T("Hello World!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 	/*
-	Ê¹ÓÃ_TºêÐÞÊÎ×Ö·û´®³£Á¿Ê±Òª×¢Òâ£º
-	1¡¢½«×Ö·ûÉùÃ÷ÎªTCHARÀàÐÍ¶ø²»ÊÇcharÀàÐÍ£¬Èç¹û¶¨ÒåÁË_UNICODE·ûºÅ£¬TCHAR½«ÇóÖµÎªwchar_t£¬ËûÊÇÒ»¸ö
-		16ÎªµÄUnicode×Ö·û¡£Èç¹ûÃ»ÓÐ¶¨Òå_UNICODE£¬TCHAR½«±äÎªÆÕÍ¨µÄchar¡£
-	2¡¢²»ÒªÊ¹ÓÃchar*»òÕßwchar_t*À´ÉùÃ÷TCHAR×Ö·û´®µÄÖ¸Õë£¬¶øÓ¦µ±Ê¹ÓÃTCHAR*»òÕß¸ü¼ÑµÄLPTSTR(Ö¸ÏòTCHAR×Ö·û´®µÄÖ¸Õë)
-		ºÍLPCTSTR(Ö¸Ïòconst TCHAR×Ö·û´®µÄÖ¸Õë)Êý¾ÝÀàÐÍ
-	3¡¢Ò»¸ö×Ö·û²»Ò»¶¨Ö»ÓÐ8Î»¿í¡£Èç¹ûÒª½«ÒÔ×Ö½Ú±íÊ¾µÄ»º³åÇø³¤¶È×ª±äÎªÒÔ×Ö·û±íÊ¾µÄ»º³åÇø´óÐ¡£¬¿ÉÒÔ½èÖúsizeof(TCHAR)»®·Ö»º³åÇø³¤¶È¡£
+	ä½¿ç”¨_Tå®ä¿®é¥°å­—ç¬¦ä¸²å¸¸é‡æ—¶è¦æ³¨æ„ï¼š
+	1ã€å°†å­—ç¬¦å£°æ˜Žä¸ºTCHARç±»åž‹è€Œä¸æ˜¯charç±»åž‹ï¼Œå¦‚æžœå®šä¹‰äº†_UNICODEç¬¦å·ï¼ŒTCHARå°†æ±‚å€¼ä¸ºwchar_tï¼Œä»–æ˜¯ä¸€ä¸ª
+		16ä¸ºçš„Unicodeå­—ç¬¦ã€‚å¦‚æžœæ²¡æœ‰å®šä¹‰_UNICODEï¼ŒTCHARå°†å˜ä¸ºæ™®é€šçš„charã€‚
+	2ã€ä¸è¦ä½¿ç”¨char*æˆ–è€…wchar_t*æ¥å£°æ˜ŽTCHARå­—ç¬¦ä¸²çš„æŒ‡é’ˆï¼Œè€Œåº”å½“ä½¿ç”¨TCHAR*æˆ–è€…æ›´ä½³çš„LPTSTR(æŒ‡å‘TCHARå­—ç¬¦ä¸²çš„æŒ‡é’ˆ)
+		å’ŒLPCTSTR(æŒ‡å‘const TCHARå­—ç¬¦ä¸²çš„æŒ‡é’ˆ)æ•°æ®ç±»åž‹
+	3ã€ä¸€ä¸ªå­—ç¬¦ä¸ä¸€å®šåªæœ‰8ä½å®½ã€‚å¦‚æžœè¦å°†ä»¥å­—èŠ‚è¡¨ç¤ºçš„ç¼“å†²åŒºé•¿åº¦è½¬å˜ä¸ºä»¥å­—ç¬¦è¡¨ç¤ºçš„ç¼“å†²åŒºå¤§å°ï¼Œå¯ä»¥å€ŸåŠ©sizeof(TCHAR)åˆ’åˆ†ç¼“å†²åŒºé•¿åº¦ã€‚
 	*/
 }
 
